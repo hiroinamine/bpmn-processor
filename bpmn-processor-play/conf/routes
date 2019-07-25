@@ -3,5 +3,8 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
-# An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+# Home
+GET     /                           org.hiroinamine.controllers.HomeController.index
+
+# Workflows
+POST          /bpmn/:id             org.hiroinamine.controllers.BpmnController.fire(id: String, sessionId: Option[String], sync: Boolean ?= false)

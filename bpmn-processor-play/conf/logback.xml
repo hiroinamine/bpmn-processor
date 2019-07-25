@@ -6,7 +6,7 @@
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
     <file>${application.home:-.}/logs/application.log</file>
     <encoder>
-      <pattern>%date [%level] from %logger in %thread - %message%n%xException</pattern>
+      <pattern>%date - [%level] - %logger{20} - %thread{15} - %message%n%xException</pattern>
     </encoder>
   </appender>
 
@@ -25,10 +25,15 @@
   </appender>
 
   <logger name="play" level="INFO" />
+  <logger name="org.hiroinamine" level="INFO" />
   <logger name="application" level="DEBUG" />
+  <logger name="org.jdbcdslog.ConnectionLogger" level="OFF"  /> <!-- Won' log connections -->
+  <logger name="org.jdbcdslog.StatementLogger"  level="INFO" /> <!-- Will log all statements -->
+  <logger name="org.jdbcdslog.ResultSetLogger"  level="OFF"  /> <!-- Won' log result sets -->
+
 
   <root level="WARN">
-    <!--<appender-ref ref="ASYNCFILE" />-->
+    <appender-ref ref="ASYNCFILE" />
     <appender-ref ref="ASYNCSTDOUT" />
   </root>
 
