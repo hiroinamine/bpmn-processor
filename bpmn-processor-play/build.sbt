@@ -25,15 +25,15 @@ libraryDependencies ++= Seq(
   //"org.json4s" %% "json4s-jackson" % "3.6.7",
   "org.json4s" %% "json4s-ext" % "3.6.7",
   // Camunda Workflow
-  "org.camunda.bpm" % "camunda-bom" % "7.8.0",
-  "org.camunda.bpm" % "camunda-engine" % "7.8.0",
-  "org.camunda.bpm" % "camunda-engine-plugin-connect" % "7.8.0",
-  "org.camunda.connect" % "camunda-connect-connectors-all" % "1.0.3",
-  "org.camunda.template-engines" % "camunda-template-engines-freemarker" % "1.0.1",
-  "org.camunda.bpm" % "camunda-engine-plugin-spin" % "7.8.0",
-  "org.camunda.spin" % "camunda-spin-dataformat-json-jackson" % "1.3.1",
+  "org.camunda.bpm" % "camunda-bom" % "7.11.0",
+  "org.camunda.bpm" % "camunda-engine" % "7.11.0",
+  "org.camunda.bpm" % "camunda-engine-plugin-connect" % "7.11.0",
+  "org.camunda.bpm" % "camunda-engine-plugin-spin" % "7.11.0",
+  "org.camunda.connect" % "camunda-connect-connectors-all" % "1.1.4",
+  "org.camunda.template-engines" % "camunda-template-engines-freemarker" % "1.1.0",
+  "org.camunda.spin" % "camunda-spin-dataformat-json-jackson" % "1.6.7",
   // UUID
-  "com.fasterxml.uuid" % "java-uuid-generator" % "3.1.2",
+  "com.fasterxml.uuid" % "java-uuid-generator" % "3.2.0",
   // Database
   // "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
   "com.h2database" % "h2" % "1.4.199"

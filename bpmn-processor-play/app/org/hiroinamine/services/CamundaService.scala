@@ -34,7 +34,6 @@ class CamundaService @Inject()(dBApi: DBApi,
   val syncWaitTime = config.getOptional[Int]("cache.sync-wait-time").getOrElse(5).seconds
   val cacheDuration = syncWaitTime + 10.seconds
   implicit val ec: ExecutionContext = system.dispatchers.lookup("contexts.camunda-executor")
-  // import scala.concurrent.ExecutionContext.Implicits.global
 
   protected def init(dBApi: DBApi, enableJob: Boolean = false) = {
     val plugins: Seq[ProcessEnginePlugin] = Seq(

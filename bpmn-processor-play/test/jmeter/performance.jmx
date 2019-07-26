@@ -17,9 +17,14 @@
             <stringProp name="Argument.value">9000</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="realm" elementType="Argument">
+            <stringProp name="Argument.name">realm</stringProp>
+            <stringProp name="Argument.value">realmx</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="id" elementType="Argument">
             <stringProp name="Argument.name">id</stringProp>
-            <stringProp name="Argument.value">test1</stringProp>
+            <stringProp name="Argument.value">reativacao-test</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -31,7 +36,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${__P(count, 1)}</stringProp>
+          <stringProp name="LoopController.loops">${__P(count, 5000)}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${__P(users, 1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time"></stringProp>
@@ -50,7 +55,7 @@
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Realm</stringProp>
-              <stringProp name="Header.value">realmX</stringProp>
+              <stringProp name="Header.value">${realm}</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -185,7 +190,7 @@
         <boolProp name="useGroupName">true</boolProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
