@@ -25,7 +25,7 @@
   </appender>
 
   <logger name="play" level="INFO" />
-  <logger name="org.hiroinamine" level="INFO" />
+  <logger name="org.hiroinamine" level="DEBUG" />
   <logger name="application" level="DEBUG" />
   <logger name="org.jdbcdslog.ConnectionLogger" level="OFF"  /> <!-- Won' log connections -->
   <logger name="org.jdbcdslog.StatementLogger"  level="INFO" /> <!-- Will log all statements -->

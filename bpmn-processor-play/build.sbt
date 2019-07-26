@@ -22,7 +22,6 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.3" % Test,
   // Json4s
   "org.json4s" %% "json4s-native" % "3.6.7",
-  //"org.json4s" %% "json4s-jackson" % "3.6.7",
   "org.json4s" %% "json4s-ext" % "3.6.7",
   // Camunda Workflow
   "org.camunda.bpm" % "camunda-bom" % "7.11.0",
