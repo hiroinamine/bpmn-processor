@@ -1,5 +1,7 @@
 package org.hiroinamine.services
 
+import java.io.InputStream
+
 import akka.actor.ActorSystem
 import com.google.inject.Injector
 import javax.inject.Inject
@@ -29,7 +31,7 @@ class CamundaService @Inject()(dBApi: DBApi,
                                cache: AsyncCacheApi) {
   val logger = Logger(this.getClass)
   val processEngine = init(dBApi)
-  val syncWaitTime = config.getOptional[Int]("beast.workflows.sync-wait-time").getOrElse(5).seconds
+  val syncWaitTime = config.getOptional[Int]("cache.sync-wait-time").getOrElse(5).seconds
   val cacheDuration = syncWaitTime + 10.seconds
   implicit val ec: ExecutionContext = system.dispatchers.lookup("contexts.camunda-executor")
   // import scala.concurrent.ExecutionContext.Implicits.global
@@ -137,6 +139,22 @@ class CamundaService @Inject()(dBApi: DBApi,
 
       case None =>
         throw MessageNotFoundFailure(s"msg #$messageName or ssid #$sessionId not found")
+    }
+  }
+
+  def deploy(realmId: String, name: String, inputStream: InputStream): Either[String, String] = {
+    Try {
+      val deployment = processEngine.getRepositoryService.createDeployment().tenantId(realmId)
+      deployment
+        .addInputStream(name, inputStream)
+        .enableDuplicateFiltering(true)
+        .deploy()
+    } match {
+      case Success(d) =>
+        Right(d.getId)
+      case Failure(error) =>
+        logger.error("deployment error", error)
+        Left(error.getMessage)
     }
   }
 

@@ -1,5 +1,6 @@
 package org.hiroinamine.controllers
 
+import java.io.FileInputStream
 import java.util.UUID
 
 import javax.inject.Inject
@@ -21,7 +22,7 @@ class BpmnController @Inject()(cc: ControllerComponents, camundaService: Camunda
 
   def fire(id: String, sessionId: Option[String], sync: Boolean) = Action(parse.json) { req =>
     val session = sessionId.getOrElse(UUID.randomUUID().toString)
-    val realmId = req.headers.get("Realm").getOrElse("realm1")
+    val realmId = req.headers.get("Realm").getOrElse("realm1").toLowerCase
     val body = req.body.toString(): Map[String, AnyRef]
 
     Try(camundaService.fire(realmId, id, session, body, sync)) match {
@@ -30,6 +31,21 @@ class BpmnController @Inject()(cc: ControllerComponents, camundaService: Camunda
         GatewayTimeout(Json.obj("msg" -> error.toString))
       case Failure(error) =>
         InternalServerError(Json.obj("msg" -> error.toString))
+    }
+  }
+
+  def deploy() = Action(parse.multipartFormData) { req =>
+    val realmId = req.headers.get("Realm").getOrElse("realm1").toLowerCase
+    req.body.files.headOption match {
+      case Some(tempFile) =>
+        camundaService
+          .deploy(realmId, tempFile.filename, new FileInputStream(tempFile.ref))
+          .fold({ error =>
+            InternalServerError(Json.obj("msg" -> error))
+          }, { deployId =>
+            Ok(Json.obj("deployId" -> deployId))
+          })
+      case _ => BadRequest(Json.obj("msg" -> "Expect some parameter"))
     }
   }
 

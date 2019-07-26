@@ -35,6 +35,7 @@ libraryDependencies ++= Seq(
   // UUID
   "com.fasterxml.uuid" % "java-uuid-generator" % "3.1.2",
   // Database
+  // "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
   "com.h2database" % "h2" % "1.4.199"
 )
 

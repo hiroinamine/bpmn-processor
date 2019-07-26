@@ -19,7 +19,7 @@
           </elementProp>
           <elementProp name="id" elementType="Argument">
             <stringProp name="Argument.name">id</stringProp>
-            <stringProp name="Argument.value">5198946c-78a1-4205-8607-694cccc7485a</stringProp>
+            <stringProp name="Argument.value">test1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -50,7 +50,7 @@
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Realm</stringProp>
-              <stringProp name="Header.value">realm2</stringProp>
+              <stringProp name="Header.value">realmX</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -135,7 +135,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-          <stringProp name="HTTPSampler.path">/bpmn/${id}</stringProp>
+          <stringProp name="HTTPSampler.path">/bpmn/${id}/fire</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
