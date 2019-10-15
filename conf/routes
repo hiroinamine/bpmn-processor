@@ -7,5 +7,5 @@
 GET     /                           org.hiroinamine.controllers.HomeController.index
 
 # Workflows
-POST          /bpmn/:id/fire             org.hiroinamine.controllers.BpmnController.fire(id: String, sessionId: Option[String], sync: Boolean ?= false)
-POST          /bpmn/deploy          org.hiroinamine.controllers.BpmnController.deploy()
+POST          /bpmn/:id/fire            org.hiroinamine.controllers.BpmnController.fire(id: String, sessionId: Option[String], sync: Boolean ?= false)
+POST          /bpmn/deploy              org.hiroinamine.controllers.BpmnController.deploy()
